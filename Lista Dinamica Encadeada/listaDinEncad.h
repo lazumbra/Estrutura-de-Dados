@@ -10,5 +10,14 @@ Lista* cria_lista();
 
 void libera_lista(Lista* li);
 
+int tamanho_lista(Lista *li);
+
+int lista_cheia(Lista* li);
+
+//Se o retorno for 1 quer dizer que a lista é vazia
+int lista_vazia(Lista* li);
+
+int insere_lista_inicio(Lista* li, struct aluno al);
+
 
 

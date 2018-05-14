@@ -7,6 +7,11 @@ int main(){
     Lista *li;
     li = cria_lista();
     libera_lista(li);
+    int x = tamanho_lista(li);
+    int y = lista_vazia(li);
+
+    //int x = insere_lista_inicio(li, dados_aluno);
+
 
 
     return 0;
