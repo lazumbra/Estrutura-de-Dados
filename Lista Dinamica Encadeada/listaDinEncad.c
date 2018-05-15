@@ -64,3 +64,48 @@ int insere_lista_inicio(Lista* li, struct aluno al){
     *li = no;
     return 1;
 }
+
+int insere_lista_final(Lista* li, struct aluno al){
+    if(li == NULL) return 0;
+    Elem *no = (Elem*) malloc(sizeof(Elem));
+    if(no == NULL) return 0;
+    no->dados = al;
+    no->prox = NULL;
+    if((*li) == NULL){ // lista vazia: insere inicio
+        *li = no;
+    }else{
+        Elem *aux = *li;
+        while(aux->prox != NULL){
+            aux = aux->prox;
+        }
+        aux->prox = no;
+    }
+    return 1;
+}
+
+int insere_lista_ordenada(Lista* li, struct aluno al){
+    if(li == NULL) return 0;
+    Elem *no = (Elem*) malloc(sizeof(Elem));
+    if(no = NULL) return 0;
+    no->dados = al;
+    if(lista_vazia(li)){ //insere inicio
+        no->prox = (*li);
+        *li = no;
+        return 1;
+    } else { //procura onde inserir
+        Elem *ant, *atual = *li;
+        while(atual != NULL && atual->dados.matricula < al.matricula){
+            ant = atual;
+            atual = atual->prox;
+        }
+        if(atual == *li){ //caso eu não tenha andado no while, então eu insiro no inicio
+            no->prox = (*li);
+            *li = no;
+        }else{
+            no->prox = ant->prox;
+            ant->prox = no;
+        }
+        
+    }
+    return  1;
+}
