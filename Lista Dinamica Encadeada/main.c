@@ -14,6 +14,16 @@ int main(){
 
     //int x = insere_lista_final(li, dados_alunos);
 
+    // int x = remove_lista_inicio(li)
+
+    //int x = remove_lista_final(li);
+
+    //int x = remove_lista(li, matricula_aluno);
+
+    // int x = consulta_lista_pos(li, posicao, &dados_alunos);
+
+    //int x = consulta_lista_mat(li, posicao, &dados_alunos);
+
 
 
     return 0;
