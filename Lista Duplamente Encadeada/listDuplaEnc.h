@@ -10,4 +10,17 @@ Lista* cria_lista();
 
 void libera_lista(Lista* li);
 
-//Continuar aula 18
+int tamanho_lista(Lista* li);
+
+int lista_cheia(Lista* li);
+
+int lista_vazia(Lista* li);
+
+int insere_lista_inicio(Lista* li, struct aluno al);
+
+int insere_lista_final(Lista* li, struct aluno al);
+
+//ou mesmo que dizer: insere no meio
+int insere_lista_ordenada(Lista* li, struct aluno al);
+
+//Continuar aula 20
