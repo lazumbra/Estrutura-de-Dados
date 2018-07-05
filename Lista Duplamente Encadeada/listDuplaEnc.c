@@ -71,7 +71,7 @@ int insere_lista_inicio(Lista* li, struct aluno al){
 }
 
 //Pra insserir no final eu preciso percorrer a lista
-int insere_lista_final(lista* li, struct aluno al){
+int insere_lista_final(Lista* li, struct aluno al){
     if(li == NULL) return 0; //verifico se a lista existe. Se não existir eu já retorno 0 de cara.
     Elem *no = (Elem*) malloc(sizeof(Elem));
     if(no == NULL) return 0; //Vejo se eu consegui alocar memória para um elemento, se não consegui
@@ -124,4 +124,60 @@ int insere_lista_ordenada(Lista* li, struct aluno al){
 
     }
 }
-//Continuar aula 20
+
+//OBS: Não se pode remover de ua lista vazia
+//OBS2: removendo o último nó, a lista fica vazia.
+
+//Caso eu não entenda como funcionou. Basta ir no vídeo 20 time 4:08
+int remove_lista_inicio(Lista* li){
+    if(li == NULL)
+        return 0;
+    if((*li) ==  NULL)//lista vazia. Verifica se conteudo do primeiro no é igual a NULL
+        return 0;
+
+    Elem *no = *li;
+    *li = no->prox;
+    if(no->prox != NULL)
+        no->prox->ant = NULL;
+    
+    free(no);
+    return 1;
+}
+
+int remove_lista_final(Lista* li){
+    if(li == NULL) return 0;
+    if((*li) == NULL) //Lista vazia
+        return 0;
+    Elem *no = *li;
+    while(no->prox != NULL)
+        no = no->prox;
+    
+    if(no->ant == NULL)//remover o primeiro e único
+        *li = no->prox;
+    else
+        no->ant->prox = NULL;
+
+    free(no);
+    return 1;
+}
+
+int remove_lista(Lista* li, int mat){
+    if(li == NULL) return 0;
+        Elem *no = *li;
+    while(no != NULL && no->dados.matricula != mat){
+        no = no->prox;
+    }
+    if(no == NULL)//nao encontrado
+        return 0;
+    if(no->ant == NULL)//remover o primeiro
+        *li = no->prox;
+    else
+        no->ant->prox = no->prox;
+    //nao é o ultimo
+    if(no->prox != NULL)
+        no->prox->ant = no->ant;
+    free(no);
+    return 1;
+}
+
+//Continuar aula 

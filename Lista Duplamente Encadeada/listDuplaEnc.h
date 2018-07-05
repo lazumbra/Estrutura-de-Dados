@@ -23,4 +23,10 @@ int insere_lista_final(Lista* li, struct aluno al);
 //ou mesmo que dizer: insere no meio
 int insere_lista_ordenada(Lista* li, struct aluno al);
 
+int remove_lista_inicio(Lista *li);
+
+int remove_lista_final(Lista* li);
+
+int remove_lista(Lista* li, int mat);
+
 //Continuar aula 20
