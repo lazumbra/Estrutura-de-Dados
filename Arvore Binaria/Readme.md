@@ -23,6 +23,10 @@ Informações básicas de uma árvore que deve ser implementado.
 - Número de nós
 - Altura da árvore
 
+- Podemos percorrer uma árvore de 3 formas mais importantes (é bom lembrar que existe outras formas de percorrer uma árvore).
+  - **Pré-Ordem:** Visita a raiz, o filho da esquerda e o filho da direita
+  - **Em-Ordem:** Visita o filho da esquerda, a raiz e o filho da direita.
+  - **Pós-Ordem:** Visita o filho da esqueda, o filho da direita e depois visita a raiz.
 
 **Criação da árvore:** Em outras palavras é a criação da raiz. A raiz é um ***nó especial*** que aponta para o primeiro elemento da árvore.
 **Destruição da árvore:** É preciso eu percorrer todos os nós da árvore e liberar a memória de cada n
@@ -167,6 +171,148 @@ int altura_ArvBin(ArvBin *raiz){
 
 //Programa principal
 int x = altura_ArvBin(raiz);
+```
+
+
+![Image](/home/jefferson/my-notes-Medleytext/resources/SkGEE5jMm_H1DdorhzQ.png)
+
+
+```c
+//ArvoreBinaria.h
+int totalNO_ArvBin(ArvBin *raiz);
+
+
+//ArvoreBinaria.c
+int totalNO_ArvBin(ArvBin *raiz){
+    if (raiz == NULL)
+        return 0;
+    if(*raiz == NULL)
+        return 0;
+    int alt_esq = totalNO_ArvBin(&((*raiz)->esq));
+    int alt_dir = totalNO_ArvBin(&((*raiz)->dir));
+    return(alt_esq + alt_dir + 1);
+}
+
+
+//Programa principal
+int x = totalNO_ArvBin(raiz);
+```
+
+
+![Image](/home/jefferson/my-notes-Medleytext/resources/SkGEE5jMm_SkCtar3fX.png)
+
+
+```c
+//ArvoreBinaria.h
+void preOrdem_ArvBin(ArvBin *raiz);
+
+
+//ArvoreBinaria.c
+void preOrdem_ArvBin(ArvBin *raiz){
+    if(raiz == NULL)
+        return;
+    if(*raiz != NULL){
+        printf("%d\n", (*raiz)->info);
+        preOrdem_ArvBin(&((*raiz)->esq));//Estou passando o endereço do filho da esquerda
+        preOrdem_ArvBin(&((*raiz)->dir));//Aqui eu estou passando o endereço do filho da direita
+    }
+}
+
+//Programa principal
+preOrdem_ArvBin(raiz);
+```
+
+
+![Image](/home/jefferson/my-notes-Medleytext/resources/SkGEE5jMm_rJ0YCS2fQ.png)
+
+
+```c
+//ArvoreBinaria.h
+void emOrdem_ArvBin(ArvBin *raiz);
+
+
+//ArvoreBinaria.c
+void emOrdem_ArvBin(ArvBin *raiz){
+    if(raiz == NULL)
+        return;
+    if(*raiz != NULL){
+        emOrdem_ArvBin(&((*raiz)->esq));
+        printf("%d\n", (*raiz)->info);
+        emOrdem_ArvBin(&((*raiz)->dir));
+    }
+}
+
+
+//Programa principal
+emOrdem_ArvBin(raiz);
+```
+
+
+![Image](/home/jefferson/my-notes-Medleytext/resources/SkGEE5jMm_BkZw182fm.png)
+
+
+```c
+//ArvoreBinaria.h
+void posOrdem_ArvBin(ArvBin *raiz);
+
+//ArvoreBinaria.c
+void posOrdem_ArvBin(ArvBin *raiz){
+    if(raiz == NULL)
+        return;
+    if(*raiz != NULL){
+        posOrdem_ArvBin(&((*raiz)->esq));
+        posOrdem_ArvBin(&((*raiz)->dir));
+        printf("%d\n", (*raiz)->info)
+    }
+}
+
+//Programa principal
+posOrdem_ArvBin(raiz);
+```
+
+```c
+//ArvoreBinaria.h
+int x = insere_ArvBin(raiz,valor);
+
+
+//ArvoreBinaria.c
+int x = insere_ArvBin(ArvBin raiz,int valor){
+    if(raiz ==NULL)
+        return 0;
+    struct NO* novo;
+    novo = (struct NO*) malloc(sizeof(struct NO));
+    if(novo == NULL)
+        return 0;
+    novo->infor = valor;
+    novo->dir = NULL;
+    novo->esq = NULL;
+
+    if(*raiz == NULL)
+        *raiz = novo;
+    else{
+        struct NO* atual = *raiz;
+        struct NO* ant =  NULL;
+        while(atual != NULL){
+            ant = atual;
+            if(valor == atual->info){
+                free(novo);
+                return 0; //elemento já existe
+            }
+            if(valor >Ç atual->info)
+                atual = atual->dir;
+            else
+                atual = atual->esq
+        }
+        if(valor > ant->info)
+            ant->dir = novo;
+        else
+            ant->esq = novo;
+    }
+    return 1;
+
+}
+
+//Programa principal
 ```
 
 ```c
